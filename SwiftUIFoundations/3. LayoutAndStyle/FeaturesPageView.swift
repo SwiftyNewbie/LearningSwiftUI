@@ -24,6 +24,6 @@ struct FeaturesPageView: View {
 #Preview {
     FeaturesPageView()
         .frame(maxHeight: .infinity)
-        .background(Gradient(colors: gradientColors))
+        .background(Gradient(colors: gradientColors1))
         .foregroundStyle(.white)
 }
