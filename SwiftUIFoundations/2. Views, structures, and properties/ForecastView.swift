@@ -56,7 +56,9 @@ struct DayForecast: View {
             Text(day)
                 .font(.title2)
             Image(systemName: iconName)
-                .font(.largeTitle)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 46, height: 46)
                 .foregroundStyle(iconColor)
                 .padding(2)
             Text("High: \(high)º")
@@ -78,12 +80,21 @@ struct WeekForecast: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Week Forecast")
-                .font(.largeTitle)
+            HStack {
+                Spacer()
+                Text("Week Forecast")
+                    .font(.largeTitle)
+                    .padding(.bottom, 8)
+                Spacer()
+            }
             ExtractedView(title: "📈 Avg High:", value: avgHigh)
+                .padding(.bottom, 4)
             ExtractedView(title: "📉 Avg Low:", value: avgLow)
+                .padding(.bottom, 4)
             ExtractedView(title: "☔️ Rainy Days:", value: rainyDays)
+                .padding(.bottom, 4)
             ExtractedView(title: "☀️ Sunny Days:", value: sunnyDays)
+            Spacer()
         }
         .padding()
     }
