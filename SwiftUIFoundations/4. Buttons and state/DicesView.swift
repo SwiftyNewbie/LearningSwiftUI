@@ -24,6 +24,7 @@ struct DicesView: View {
                         numberOfDice -= 1
                     }
                 }
+                .symbolRenderingMode(.multicolor)
                 .disabled(numberOfDice == 1)
 
                 Button("Add Dice", systemImage: "plus.circle.fill") {
@@ -31,6 +32,7 @@ struct DicesView: View {
                         numberOfDice += 1
                     }
                 }
+                .symbolRenderingMode(.multicolor)
                 .disabled(numberOfDice == 5)
             }
             .labelStyle(.iconOnly)

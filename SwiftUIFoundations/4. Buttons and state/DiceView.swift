@@ -5,18 +5,24 @@ struct DiceView: View {
 
     var body: some View {
         VStack {
-            Image(systemName: "die.face.\(numberOfPips).fill")
-                .resizable()
-                .frame(maxWidth: 100, maxHeight: 100)
-                .aspectRatio(1, contentMode: .fit)
-                .foregroundStyle(.black, .white)
-
-            Button("Roll") {
-                withAnimation {
-                    numberOfPips = Int.random(in: 1...6)
-                }
+            Button {
+                rollDice()
+            } label: {
+                Image(systemName: "die.face.\(numberOfPips).fill")
+                    .resizable()
+                    .frame(maxWidth: 100, maxHeight: 100)
+                    .aspectRatio(1, contentMode: .fit)
+                    .foregroundStyle(.black, .white)
             }
+            Button("Roll", action: rollDice)
+            .buttonBorderShape(.capsule)
             .buttonStyle(.bordered)
+        }
+    }
+
+    func rollDice() {
+        withAnimation {
+            numberOfPips = Int.random(in: 1...6)
         }
     }
 }
