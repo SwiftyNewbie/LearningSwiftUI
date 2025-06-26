@@ -32,6 +32,11 @@ struct SwiftUIApp: App {
                 } label: {
                     Label("Onboarding", systemImage: "arrow.triangle.2.circlepath")
                 }
+                Tab {
+                    DicesView()
+                } label: {
+                    Label("Dice", systemImage: "dice")
+                }
             }
         }
     }
