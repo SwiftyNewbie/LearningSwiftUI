@@ -3,13 +3,13 @@ import SwiftUI
 struct ChatBubblesView: View {
     var body: some View {
         VStack(spacing: 25) {
-            ChatBubble(text: "Knock, knock!", color: .yellow, isSquare: false, fromSelf: false)
-            ChatBubble(text: "Who is there?", color: .teal, isSquare: false, fromSelf: true)
-            ChatBubble(text: "It's me! Mario!", color: .yellow, isSquare: false, fromSelf: false)
-            ChatBubble(text: "It's also me!", color: .brown, isSquare: true, fromSelf: false)
-            ChatBubble(text: "Who??", color: .teal, isSquare: false, fromSelf: true)
-            ChatBubble(text: "Doctor Who", color: .brown, isSquare: true, fromSelf: false)
-            ChatBubble(text: "Who???", color: .teal, isSquare: false, fromSelf: true)
+            ChatBubble(text: "Knock, knock!", color: .yellow, isEllipse: false, fromSelf: false)
+            ChatBubble(text: "Who is there?", color: .teal, isEllipse: false, fromSelf: true)
+            ChatBubble(text: "It's me! Mario!", color: .yellow, isEllipse: false, fromSelf: false)
+            ChatBubble(text: "It's also me!", color: .brown, isEllipse: true, fromSelf: false)
+            ChatBubble(text: "Who??", color: .teal, isEllipse: false, fromSelf: true)
+            ChatBubble(text: "Doctor Who", color: .brown, isEllipse: true, fromSelf: false)
+            ChatBubble(text: "Who???", color: .teal, isEllipse: false, fromSelf: true)
         }
         .shadow(radius: 10)
         .padding()
@@ -23,14 +23,15 @@ struct ChatBubblesView: View {
 struct ChatBubble: View {
     let text: String
     let color: Color
-    let isSquare: Bool
+    let isEllipse: Bool
     let fromSelf: Bool
 
-    var shape: some Shape {
-        if isSquare {
-            RoundedRectangle(cornerRadius: 2)
+    @ViewBuilder
+    var shape: some View {
+        if isEllipse {
+            color.clipShape(Ellipse())
         } else {
-            RoundedRectangle(cornerRadius: 12)
+            color.clipShape(RoundedRectangle(cornerRadius: 8))
         }
     }
 
@@ -41,7 +42,7 @@ struct ChatBubble: View {
             }
             Text(text)
                 .padding()
-                .background(color, in: shape)
+                .background(shape)
             if !fromSelf {
                 Spacer()
             }
