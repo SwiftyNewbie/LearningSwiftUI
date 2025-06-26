@@ -37,6 +37,11 @@ struct SwiftUIApp: App {
                 } label: {
                     Label("Dice", systemImage: "dice")
                 }
+                Tab {
+                    PickAPalView()
+                } label: {
+                    Label("Pick a Pal", systemImage: "person.2.circle")
+                }
             }
         }
     }
