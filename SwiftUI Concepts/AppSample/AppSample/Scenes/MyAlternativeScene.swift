@@ -3,7 +3,7 @@ import SwiftUI
 struct MyAlternativeScene: Scene {
     var body: some Scene {
         WindowGroup {
-            AlternativeContentView()
+            RecipeListView()
         }
         #if os(macOS)
         Settings {

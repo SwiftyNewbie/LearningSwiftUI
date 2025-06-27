@@ -14,6 +14,11 @@ struct MyScene: Scene {
                 } label: {
                     Label("Settings", systemImage: "gear")
                 }
+                Tab {
+                    RecipeListView()
+                } label: {
+                    Label("Recipe List", systemImage: "frying.pan")
+                }
             }
         }
     }

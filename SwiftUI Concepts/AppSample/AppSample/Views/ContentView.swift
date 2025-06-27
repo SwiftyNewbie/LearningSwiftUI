@@ -1,12 +1,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    let keywords: [String] = ["chives", "fern-leaf lavender"]
+
     var body: some View {
-        LazyHStack {
-            Image(systemName: "globe")
-                .imageScale(.small)
-                .foregroundStyle(.teal)
-            Text("Hello, your name!")
+        LazyVStack {
+            ForEach(keywords, id: \.self) { keyword in
+                KeywordBubbleDefaultPadding(keyword: keyword, symbol: "leaf")
+            }
         }
         .padding()
     }
