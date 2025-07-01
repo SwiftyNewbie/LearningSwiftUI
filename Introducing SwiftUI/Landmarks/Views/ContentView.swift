@@ -2,7 +2,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        LandmarkList()
+        VStack {
+            HikeView(hike: ModelData().hikes[0])
+                .padding()
+            Spacer()
+        }
     }
 }
 
