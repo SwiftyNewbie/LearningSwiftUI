@@ -1,11 +1,20 @@
 import SwiftUI
 
 struct ContentView: View {
+
     var body: some View {
-        VStack {
-            HikeView(hike: ModelData().hikes[0])
-                .padding()
-            Spacer()
+        TabView {
+            Tab {
+                CategoryHome()
+            } label: {
+                Label("Featured", systemImage: "star")
+            }
+
+            Tab {
+                LandmarkList()
+            } label: {
+                Label("List", systemImage: "list.bullet")
+            }
         }
     }
 }
