@@ -9,6 +9,6 @@ My journey through Apple's SwiftUI Tutorials
    - Machine learning
    - Spatial computing
 2. [SwiftUI Concepts](https://developer.apple.com/tutorials/swiftui-concepts) ✓
-3. [Introducing SwiftUI](https://developer.apple.com/tutorials/swiftui)
+3. [Introducing SwiftUI](https://developer.apple.com/tutorials/swiftui) ✓
 4. [Profiling apps using Instruments](https://developer.apple.com/tutorials/instruments)
 5. [Sample Apps](https://developer.apple.com/tutorials/sample-apps)
