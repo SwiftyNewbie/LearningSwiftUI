@@ -2,10 +2,10 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var players: [Player] = [
-            Player(name: "Elisha", score: 0),
-            Player(name: "Andre", score: 0),
-            Player(name: "Jasmine", score: 0),
-        ]
+        Player(name: "Elisha", score: 0, color: .red),
+        Player(name: "Andre", score: 0, color: .blue),
+        Player(name: "Jasmine", score: 0, color: .green),
+    ]
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -28,8 +28,7 @@ struct ContentView: View {
                         TextField("Name", text: $player.name)
 
                         Text("\(player.score)")
-
-                        Stepper("\(player.score)", value: $player.score)
+                        Stepper("", value: $player.score, in: 0...20)
                             .labelsHidden()
                     }
                 }
@@ -37,7 +36,7 @@ struct ContentView: View {
             .padding(.vertical)
 
             Button("Add Player", systemImage: "plus") {
-                players.append(Player(name: "", score: 0))
+                players.append(Player(name: "", score: 0, color: .gray))
             }
 
             Spacer()
@@ -50,9 +49,3 @@ struct ContentView: View {
     ContentView()
 }
 
-struct Player: Identifiable {
-    let id = UUID()
-
-    var name: String
-    var score: Int
-}
