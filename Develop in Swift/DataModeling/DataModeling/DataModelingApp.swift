@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct ScoreKeeperApp: App {
+struct DataModelingApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

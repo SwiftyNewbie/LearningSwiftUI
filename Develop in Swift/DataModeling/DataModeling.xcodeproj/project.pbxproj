@@ -11,9 +11,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		EBA0C3022E1C135D002047B5 /* ScoreKeeper */ = {
+		EBA0C3022E1C135D002047B5 /* DataModeling */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ScoreKeeper;
+			path = DataModeling;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		EBA0C2F72E1C135D002047B5 = {
 			isa = PBXGroup;
 			children = (
-				EBA0C3022E1C135D002047B5 /* ScoreKeeper */,
+				EBA0C3022E1C135D002047B5 /* DataModeling */,
 				EBA0C3012E1C135D002047B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,7 +61,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				EBA0C3022E1C135D002047B5 /* ScoreKeeper */,
+				EBA0C3022E1C135D002047B5 /* DataModeling */,
 			);
 			name = ScoreKeeper;
 			packageProductDependencies = (
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EBA0C2FB2E1C135D002047B5 /* Build configuration list for PBXProject "ScoreKeeper" */;
+			buildConfigurationList = EBA0C2FB2E1C135D002047B5 /* Build configuration list for PBXProject "DataModeling" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -307,7 +307,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EBA0C2FB2E1C135D002047B5 /* Build configuration list for PBXProject "ScoreKeeper" */ = {
+		EBA0C2FB2E1C135D002047B5 /* Build configuration list for PBXProject "DataModeling" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBA0C3092E1C135E002047B5 /* Debug */,
