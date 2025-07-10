@@ -63,4 +63,40 @@ struct ScoreKeeperTests {
             Player(name: "John", score: 5, color: .green),
         ])
     }
+
+    @Test("One Round")
+    func oneRound() {
+        var scoreboard = Scoreboard(
+            players: [
+                Player(name: "Elisha", score: 0, color: .black),
+                Player(name: "Andre", score: 5, color: .blue),
+                Player(name: "John", score: 5, color: .green),
+            ],
+            state: .gameOver,
+            doesHighestScoreWin: true)
+        scoreboard.startGame(of: 1)
+
+        #expect(scoreboard.lastRound)
+    }
+
+    @Test("Several Round")
+    func severalRounds() {
+        var scoreboard = Scoreboard(
+            players: [
+                Player(name: "Elisha", score: 0, color: .black),
+                Player(name: "Andre", score: 5, color: .blue),
+                Player(name: "John", score: 5, color: .green),
+            ],
+            state: .gameOver,
+            doesHighestScoreWin: true)
+        scoreboard.startGame(of: 3)
+        scoreboard.advanceRound()
+
+        #expect(!scoreboard.lastRound)
+
+        scoreboard.advanceRound()
+        scoreboard.advanceRound()
+
+        #expect(scoreboard.lastRound)
+    }
 }

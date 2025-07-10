@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var scoreboard = Scoreboard()
     @State private var startingPoints = 0
+    @State private var rounds = 1
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -12,7 +13,7 @@ struct ContentView: View {
                 .fontDesign(.monospaced)
                 .padding(.bottom)
 
-            SettingsView(doesHighestScoreWin: $scoreboard.doesHighestScoreWin, startingPoint: $startingPoints)
+            SettingsView(doesHighestScoreWin: $scoreboard.doesHighestScoreWin, startingPoint: $startingPoints, rounds: $rounds)
                 .disabled(scoreboard.state != .setup)
 
             Grid {
@@ -60,19 +61,33 @@ struct ContentView: View {
             HStack {
                 Spacer()
 
-                switch scoreboard.state {
-                case .setup:
-                    Button("Start Game", systemImage: "play.fill") {
-                        scoreboard.state = .playing
-                        scoreboard.resetScores(to: startingPoints)
+                VStack {
+                    if rounds > 1 {
+                        Text("Current Round: \(scoreboard.currentRound)")
+                            .opacity(scoreboard.state == .playing ? 1 : 0)
                     }
-                case .playing:
-                    Button("End Game", systemImage: "stop.fill") {
-                        scoreboard.state = .gameOver
-                    }
-                case .gameOver:
-                    Button("Reset Game", systemImage: "arrow.counterclockwise") {
-                        scoreboard.state = .setup
+
+                    switch scoreboard.state {
+                    case .setup:
+                        Button("Start Game", systemImage: "play.fill") {
+                            scoreboard.state = .playing
+                            scoreboard.resetScores(to: startingPoints)
+                            scoreboard.startGame(of: rounds)
+                        }
+                    case .playing:
+                        if scoreboard.lastRound {
+                            Button("End Game", systemImage: "stop.fill") {
+                                scoreboard.state = .gameOver
+                            }
+                        } else {
+                            Button("Next Round", systemImage: "forward.fill") {
+                                scoreboard.advanceRound()
+                            }
+                        }
+                    case .gameOver:
+                        Button("Reset Game", systemImage: "arrow.counterclockwise") {
+                            scoreboard.state = .setup
+                        }
                     }
                 }
 

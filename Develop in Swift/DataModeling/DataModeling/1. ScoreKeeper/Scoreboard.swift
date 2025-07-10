@@ -11,6 +11,12 @@ struct Scoreboard {
     var state = GameState.setup
     var doesHighestScoreWin = true
 
+    var rounds = 1
+    var currentRound = 1
+    var lastRound: Bool {
+        currentRound >= rounds
+    }
+
     var winners: [Player] {
         guard state == .gameOver else { return [] }
         var winningScore = 0
@@ -35,5 +41,14 @@ struct Scoreboard {
         for i in 0..<players.count {
             players[i].score = newValue
         }
+    }
+
+    mutating func startGame(of rounds: Int) {
+        currentRound = 1
+        self.rounds = rounds
+    }
+
+    mutating func advanceRound() {
+        currentRound += 1
     }
 }
