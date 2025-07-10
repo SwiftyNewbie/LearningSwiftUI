@@ -32,6 +32,11 @@ struct ContentView: View {
                                     .foregroundStyle(.yellow)
                             }
                             TextField("Name", text: $player.name)
+                                .foregroundStyle(player.color)
+                            ColorPicker("Player's color", selection: $player.color)
+                                .labelsHidden()
+                                .opacity(scoreboard.state == .setup ? 1 : 0)
+
                         }
 
                         Text("\(player.score)")
