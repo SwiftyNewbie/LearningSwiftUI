@@ -101,4 +101,41 @@ struct ScoreKeeperTests {
 
         #expect(scoreboard.lastRound)
     }
+
+    @Test("Check that there is a player who has reached the required number of points")
+    func isPlayerReachedRequiredNumberOfPointsToWinTriggersGameOver() {
+        var scoreboard = Scoreboard(
+            players: [
+                Player(name: "Elisha", score: 0, color: .black),
+                Player(name: "Andre", score: 4, color: .blue),
+                Player(name: "John", score: 3, color: .green),
+            ],
+            state: .gameOver,
+            doesHighestScoreWin: true,
+            rounds: 3,
+            pointsToWin: 5)
+
+        scoreboard.startGame()
+        scoreboard.players[0].score = 5
+
+        #expect(scoreboard.state == .gameOver)
+    }
+
+    @Test("Check that there is a player who has reached the required number of points from start")
+    func isPlayerReachedRequiredNumberOfPointsToWinTriggersGameOverFromStart() {
+        var scoreboard = Scoreboard(
+            players: [
+                Player(name: "Elisha", score: 0, color: .black),
+                Player(name: "Andre", score: 5, color: .blue),
+                Player(name: "John", score: 3, color: .green),
+            ],
+            state: .gameOver,
+            doesHighestScoreWin: true,
+            rounds: 3,
+            pointsToWin: 5)
+
+        scoreboard.startGame()
+
+        #expect(scoreboard.state == .gameOver)
+    }
 }
