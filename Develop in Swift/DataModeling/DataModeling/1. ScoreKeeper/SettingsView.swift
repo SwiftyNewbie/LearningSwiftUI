@@ -4,6 +4,7 @@ struct SettingsView: View {
     @Binding var doesHighestScoreWin: Bool
     @Binding var startingPoint: Int
     @Binding var rounds: Int
+    @Binding var pointsToWin: Int
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -36,6 +37,15 @@ struct SettingsView: View {
                 Text("10 rounds")
                     .tag(10)
             }
+
+            Picker("Points To Win", selection: $pointsToWin) {
+                Text("10 Points to Win")
+                    .tag(10)
+                Text("20 Points to Win")
+                    .tag(20)
+                Text("100 Points to Win")
+                    .tag(100)
+            }
         }
         .padding()
         .background(.thinMaterial, in: .rect(cornerRadius: 10.0))
@@ -46,5 +56,6 @@ struct SettingsView: View {
     @Previewable @State var doesHighestScoreWin = true
     @Previewable @State var startingPoints = 10
     @Previewable @State var rounds = 1
-    SettingsView(doesHighestScoreWin: $doesHighestScoreWin, startingPoint: $startingPoints, rounds: $rounds)
+    @Previewable @State var pointsToWin = 100
+    SettingsView(doesHighestScoreWin: $doesHighestScoreWin, startingPoint: $startingPoints, rounds: $rounds, pointsToWin: $pointsToWin)
 }

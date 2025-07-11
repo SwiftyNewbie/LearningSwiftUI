@@ -17,6 +17,11 @@ struct Scoreboard {
         currentRound >= rounds
     }
 
+    var pointsToWin = 10
+    var isPlayerReachedRequiredNumberOfPointsToWin: Bool {
+        !players.filter { $0.score >= pointsToWin }.isEmpty
+    }
+
     var winners: [Player] {
         guard state == .gameOver else { return [] }
         var winningScore = 0
@@ -43,9 +48,8 @@ struct Scoreboard {
         }
     }
 
-    mutating func startGame(of rounds: Int) {
+    mutating func startGame() {
         currentRound = 1
-        self.rounds = rounds
     }
 
     mutating func advanceRound() {

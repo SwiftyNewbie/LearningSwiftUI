@@ -3,7 +3,6 @@ import SwiftUI
 struct ContentView: View {
     @State private var scoreboard = Scoreboard()
     @State private var startingPoints = 0
-    @State private var rounds = 1
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -13,8 +12,12 @@ struct ContentView: View {
                 .fontDesign(.monospaced)
                 .padding(.bottom)
 
-            SettingsView(doesHighestScoreWin: $scoreboard.doesHighestScoreWin, startingPoint: $startingPoints, rounds: $rounds)
-                .disabled(scoreboard.state != .setup)
+            SettingsView(
+                doesHighestScoreWin: $scoreboard.doesHighestScoreWin,
+                startingPoint: $startingPoints,
+                rounds: $scoreboard.rounds,
+                pointsToWin: $scoreboard.pointsToWin
+            ).disabled(scoreboard.state != .setup)
 
             Grid {
                 GridRow {
@@ -43,7 +46,7 @@ struct ContentView: View {
                         Text("\(player.score)")
                             .opacity(scoreboard.state == .setup ? 0 : 1)
 
-                        Stepper("", value: $player.score, in: 0...20)
+                        Stepper("", value: $player.score, in: 0...scoreboard.pointsToWin)
                             .labelsHidden()
                             .opacity(scoreboard.state == .setup ? 0 : 1)
                     }
@@ -62,7 +65,7 @@ struct ContentView: View {
                 Spacer()
 
                 VStack {
-                    if rounds > 1 {
+                    if scoreboard.rounds > 1 {
                         Text("Current Round: \(scoreboard.currentRound)")
                             .opacity(scoreboard.state == .playing ? 1 : 0)
                     }
@@ -72,7 +75,7 @@ struct ContentView: View {
                         Button("Start Game", systemImage: "play.fill") {
                             scoreboard.state = .playing
                             scoreboard.resetScores(to: startingPoints)
-                            scoreboard.startGame(of: rounds)
+                            scoreboard.startGame()
                         }
                     case .playing:
                         if scoreboard.lastRound {
@@ -99,6 +102,11 @@ struct ContentView: View {
             .tint(.blue)
         }
         .padding()
+        .onChange(of: scoreboard.isPlayerReachedRequiredNumberOfPointsToWin) { _, newValue in
+            if newValue && scoreboard.state == .playing {
+                scoreboard.state = .gameOver
+            }
+        }
     }
 }
 

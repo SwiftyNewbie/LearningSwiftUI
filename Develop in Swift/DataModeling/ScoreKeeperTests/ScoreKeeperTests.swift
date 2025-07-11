@@ -73,8 +73,9 @@ struct ScoreKeeperTests {
                 Player(name: "John", score: 5, color: .green),
             ],
             state: .gameOver,
-            doesHighestScoreWin: true)
-        scoreboard.startGame(of: 1)
+            doesHighestScoreWin: true,
+            rounds: 1)
+        scoreboard.startGame()
 
         #expect(scoreboard.lastRound)
     }
@@ -88,8 +89,9 @@ struct ScoreKeeperTests {
                 Player(name: "John", score: 5, color: .green),
             ],
             state: .gameOver,
-            doesHighestScoreWin: true)
-        scoreboard.startGame(of: 3)
+            doesHighestScoreWin: true,
+            rounds: 3)
+        scoreboard.startGame()
         scoreboard.advanceRound()
 
         #expect(!scoreboard.lastRound)
