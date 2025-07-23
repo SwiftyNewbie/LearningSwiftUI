@@ -17,7 +17,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EBA0C3002E1C135D002047B5 /* ScoreKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBA0C3002E1C135D002047B5 /* DataModeling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataModeling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE20FBA2E1D6FA200A2B8A3 /* ScoreKeeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoreKeeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -64,7 +64,7 @@
 		EBA0C3012E1C135D002047B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EBA0C3002E1C135D002047B5 /* ScoreKeeper.app */,
+				EBA0C3002E1C135D002047B5 /* DataModeling.app */,
 				EBE20FBA2E1D6FA200A2B8A3 /* ScoreKeeperTests.xctest */,
 			);
 			name = Products;
@@ -73,9 +73,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EBA0C2FF2E1C135D002047B5 /* ScoreKeeper */ = {
+		EBA0C2FF2E1C135D002047B5 /* DataModeling */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EBA0C30B2E1C135E002047B5 /* Build configuration list for PBXNativeTarget "ScoreKeeper" */;
+			buildConfigurationList = EBA0C30B2E1C135E002047B5 /* Build configuration list for PBXNativeTarget "DataModeling" */;
 			buildPhases = (
 				EBA0C2FC2E1C135D002047B5 /* Sources */,
 				EBA0C2FD2E1C135D002047B5 /* Frameworks */,
@@ -88,11 +88,11 @@
 			fileSystemSynchronizedGroups = (
 				EBA0C3022E1C135D002047B5 /* DataModeling */,
 			);
-			name = ScoreKeeper;
+			name = DataModeling;
 			packageProductDependencies = (
 			);
 			productName = ScoreKeeper;
-			productReference = EBA0C3002E1C135D002047B5 /* ScoreKeeper.app */;
+			productReference = EBA0C3002E1C135D002047B5 /* DataModeling.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EBE20FB92E1D6FA200A2B8A3 /* ScoreKeeperTests */ = {
@@ -151,7 +151,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EBA0C2FF2E1C135D002047B5 /* ScoreKeeper */,
+				EBA0C2FF2E1C135D002047B5 /* DataModeling */,
 				EBE20FB92E1D6FA200A2B8A3 /* ScoreKeeperTests */,
 			);
 		};
@@ -194,7 +194,7 @@
 /* Begin PBXTargetDependency section */
 		EBE20FBF2E1D6FA200A2B8A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EBA0C2FF2E1C135D002047B5 /* ScoreKeeper */;
+			target = EBA0C2FF2E1C135D002047B5 /* DataModeling */;
 			targetProxy = EBE20FBE2E1D6FA200A2B8A3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -328,6 +328,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = DataModeling;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -338,7 +339,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = SwiftyNewbie.ScoreKeeper;
+				PRODUCT_BUNDLE_IDENTIFIER = SwiftyNewbie.DataModeling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -358,6 +359,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = DataModeling;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -368,7 +370,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = SwiftyNewbie.ScoreKeeper;
+				PRODUCT_BUNDLE_IDENTIFIER = SwiftyNewbie.DataModeling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -429,7 +431,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EBA0C30B2E1C135E002047B5 /* Build configuration list for PBXNativeTarget "ScoreKeeper" */ = {
+		EBA0C30B2E1C135E002047B5 /* Build configuration list for PBXNativeTarget "DataModeling" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBA0C30C2E1C135E002047B5 /* Debug */,
