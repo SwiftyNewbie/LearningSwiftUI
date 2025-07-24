@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct ActuialApp {
@@ -39,6 +40,7 @@ struct SwiftUIApp: App {
                 }
                 Tab {
                     PickAPalView()
+                        .modelContainer(for: Pal.self, inMemory: true)
                 } label: {
                     Label("Pick a Pal", systemImage: "person.2.circle")
                 }
