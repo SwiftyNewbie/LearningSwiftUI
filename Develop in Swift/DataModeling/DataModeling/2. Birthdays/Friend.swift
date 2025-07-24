@@ -5,10 +5,12 @@ import SwiftData
 class Friend {
     var name: String
     var birthday: Date
+    var note: String
 
-    init(name: String, birthday: Date) {
+    init(name: String, birthday: Date, note: String) {
         self.name = name
         self.birthday = birthday
+        self.note = note
     }
 
     var isBirthdayToday: Bool {

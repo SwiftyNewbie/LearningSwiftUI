@@ -2,11 +2,14 @@ import SwiftUI
 import SwiftData
 
 struct BirthdaysView: View {
-    @Query(sort: \Friend.birthday) private var friends: [Friend]
+    @Query(sort: \Friend.name) private var friends: [Friend]
     @Environment(\.modelContext) private var context
 
     @State private var newName = ""
     @State private var newDate = Date.now
+    @State private var newNote = ""
+
+    @State private var showFriendNote: Friend?
 
     var body: some View {
         NavigationStack {
@@ -20,6 +23,12 @@ struct BirthdaysView: View {
                         .bold(friend.isBirthdayToday)
                     Spacer()
                     Text(friend.birthday, format: .dateTime.month(.wide).day().year())
+                    Button {
+                        showFriendNote = friend
+                    } label: {
+                        Image(systemName: "info.circle")
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
             .navigationTitle("Birthdays")
@@ -31,18 +40,36 @@ struct BirthdaysView: View {
                         TextField("Name", text: $newName)
                             .textFieldStyle(.roundedBorder)
                     }
+
+                    TextField("Note", text: $newNote)
+                        .textFieldStyle(.roundedBorder)
+
                     Button("Save") {
-                        let newFriend = Friend(name: newName, birthday: newDate)
+                        let newFriend = Friend(name: newName, birthday: newDate, note: newNote)
                         context.insert(newFriend)
 
                         newName = ""
                         newDate = .now
+                        newNote = ""
                     }
                     .bold()
                 }
                 .padding()
                 .background(.bar)
             }
+        }
+        .sheet(item: $showFriendNote) { friend in
+            VStack {
+                Text("\(friend.name)'s B-day Party Plan")
+                    .font(.title2)
+                    .fontDesign(.monospaced)
+                    .padding(.bottom)
+
+                Text(friend.note)
+
+                Spacer()
+            }
+            .padding()
         }
     }
 }
