@@ -51,6 +51,14 @@ struct ContentView: View {
                     }
                 }
             }
+            .task {
+                var course: Course? = Course(name: nil)
+                course = nil
+                let result = course?.name?.contains("")
+                let result2 = course?.name.flatMap { $0.localizedStandardContains("") }
+                print(result)
+
+            }
         }
     }
 }
@@ -59,4 +67,12 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .modelContainer(for: Item.self, inMemory: true)
+}
+
+@Model class Course {
+    var name: String?
+
+    init(name: String?) {
+        self.name = name
+    }
 }
