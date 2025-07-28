@@ -9,6 +9,14 @@ import SwiftData
         modelContainer.mainContext
     }
 
+    var comrade: Comrade {
+        Comrade.sampleData.first!
+    }
+
+    var movie: Movie {
+        Movie.sampleData.first!
+    }
+
     private init() {
         let schema = Schema([
             Comrade.self,

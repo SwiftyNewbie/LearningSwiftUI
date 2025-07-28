@@ -10,9 +10,7 @@ struct MovieList: View {
             List {
                 ForEach(movies) { movie in
                     NavigationLink(movie.title) {
-                        Text("Details for \(movie.title)")
-                            .navigationTitle("Movie")
-                            .navigationBarTitleDisplayMode(.inline)
+                        MovieDetail(movie: movie)
                     }
                 }
             }

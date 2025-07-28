@@ -10,9 +10,7 @@ struct ComradeList: View {
             List {
                 ForEach(comrades) { comrade in
                     NavigationLink(comrade.name) {
-                        Text("Details for \(comrade.name)")
-                            .navigationTitle("Comrade")
-                            .navigationBarTitleDisplayMode(.inline)
+                        ComradeDetail(comrade: comrade)
                     }
                 }
             }
