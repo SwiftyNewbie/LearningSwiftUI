@@ -76,5 +76,5 @@ struct BirthdaysView: View {
 
 #Preview {
     BirthdaysView()
-        .modelContainer(for: Friend.self, inMemory: true)
+        .modelContainer(FriendsSampleData.shared.modelContainer)
 }
