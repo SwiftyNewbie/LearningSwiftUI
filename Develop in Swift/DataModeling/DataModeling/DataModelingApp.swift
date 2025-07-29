@@ -6,6 +6,7 @@ struct DataModelingApp: App {
     var body: some Scene {
         WindowGroup {
             FavoriteMoviesView()
+                .modelContainer(for: [Movie.self, Comrade.self])
 //            TabView {
 //                Tab("Score", systemImage: "gamecontroller") {
 //                    ContentView()
