@@ -2,6 +2,7 @@ import SwiftData
 
 @Model class Comrade {
     var name: String
+    var favoriteMovie: Movie?
 
     init(name: String) {
         self.name = name

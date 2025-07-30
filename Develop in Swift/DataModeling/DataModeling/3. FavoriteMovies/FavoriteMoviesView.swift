@@ -9,7 +9,7 @@ struct FavoriteMoviesView: View {
             }
 
             Tab("Movies", systemImage: "film.stack.fill") {
-                MovieList()
+                FilteredMovieList()
             }
         }
     }

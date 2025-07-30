@@ -43,5 +43,9 @@ import SwiftData
         for movie in Movie.sampleData {
             context.insert(movie)
         }
+        Comrade.sampleData[0].favoriteMovie = Movie.sampleData[1]
+        Comrade.sampleData[2].favoriteMovie = Movie.sampleData[0]
+        Comrade.sampleData[3].favoriteMovie = Movie.sampleData[4]
+        Comrade.sampleData[4].favoriteMovie = Movie.sampleData[0]
     }
 }

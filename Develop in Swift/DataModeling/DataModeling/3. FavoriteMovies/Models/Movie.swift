@@ -4,7 +4,8 @@ import Foundation
 @Model class Movie {
     var title: String
     var releaseDate: Date
-    
+    var favoritedBy = [Comrade]()
+
     init(title: String, releaseDate: Date) {
         self.title = title
         self.releaseDate = releaseDate

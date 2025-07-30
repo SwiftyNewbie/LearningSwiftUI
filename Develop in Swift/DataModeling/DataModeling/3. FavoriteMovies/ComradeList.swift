@@ -8,13 +8,19 @@ struct ComradeList: View {
 
     var body: some View {
         NavigationSplitView {
-            List {
-                ForEach(comrades) { comrade in
-                    NavigationLink(comrade.name) {
-                        ComradeDetail(comrade: comrade)
+            Group {
+                if !comrades.isEmpty {
+                    List {
+                        ForEach(comrades) { comrade in
+                            NavigationLink(comrade.name) {
+                                ComradeDetail(comrade: comrade)
+                            }
+                        }
+                        .onDelete(perform: deleteComrade(indexes:))
                     }
+                } else {
+                    ContentUnavailableView("Add Comrades", systemImage: "person.and.person")
                 }
-                .onDelete(perform: deleteComrade(indexes:))
             }
             .navigationTitle("Comrades")
             .toolbar {
@@ -50,4 +56,8 @@ struct ComradeList: View {
             context.delete(comrades[index])
         }
     }
+}
+#Preview("Empty List") {
+    ComradeList()
+        .modelContainer(for: Comrade.self, inMemory: true)
 }
