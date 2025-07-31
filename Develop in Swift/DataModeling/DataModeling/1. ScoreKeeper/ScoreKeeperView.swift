@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct ScoreKeeperView: View {
     @State private var scoreboard = Scoreboard()
     @State private var startingPoints = 0
 
@@ -111,6 +111,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ScoreKeeperView()
 }
 
