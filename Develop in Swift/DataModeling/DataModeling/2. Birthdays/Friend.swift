@@ -6,6 +6,7 @@ class Friend {
     var name: String
     var birthday: Date
     var note: String
+    var giftIdeas = [Gift]()
 
     init(name: String, birthday: Date, note: String) {
         self.name = name

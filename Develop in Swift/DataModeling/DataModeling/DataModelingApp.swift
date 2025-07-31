@@ -7,6 +7,6 @@ struct DataModelingApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: [Movie.self, Comrade.self, Friend.self])
+        .modelContainer(for: [Movie.self, Comrade.self, Friend.self, Gift.self])
     }
 }
