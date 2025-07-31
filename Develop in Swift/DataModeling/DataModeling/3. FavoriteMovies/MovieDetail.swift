@@ -30,6 +30,11 @@ struct MovieDetail: View {
                     ForEach(sortedComrades) { comrade in
                         Text(comrade.name)
                     }
+                    .onDelete { indexSet in
+                        indexSet.forEach { idx in
+                            sortedComrades[idx].favoriteMovie = nil
+                        }
+                    }
                 }
             }
         }
