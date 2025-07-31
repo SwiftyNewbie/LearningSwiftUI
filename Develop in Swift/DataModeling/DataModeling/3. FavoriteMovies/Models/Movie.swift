@@ -5,6 +5,7 @@ import Foundation
     var title: String
     var releaseDate: Date
     var favoritedBy = [Comrade]()
+    var cast = [Cast]()
 
     init(title: String, releaseDate: Date) {
         self.title = title

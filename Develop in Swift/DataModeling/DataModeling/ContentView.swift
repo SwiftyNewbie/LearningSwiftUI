@@ -12,6 +12,10 @@ struct ContentView: View {
                 FilteredMovieList()
             }
 
+            Tab("Cast", systemImage: "person.3.fill") {
+                CastList()
+            }
+
             Tab("Score", systemImage: "gamecontroller") {
                 ScoreKeeperView()
             }

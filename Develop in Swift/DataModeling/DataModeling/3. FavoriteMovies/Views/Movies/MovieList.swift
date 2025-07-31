@@ -8,7 +8,7 @@ struct MovieList: View {
 
     init(titleFilter: String = "", sortByReleaseDate: Bool = false) {
         let predicate = #Predicate<Movie> { movie in
-            titleFilter.isEmpty || movie.title.localizedStandardContains(titleFilter)
+            titleFilter.isEmpty || movie.title.localizedStandardContains(titleFilter) || movie.cast.contains { $0.name.localizedStandardContains(titleFilter) }
         }
 
         if sortByReleaseDate {
