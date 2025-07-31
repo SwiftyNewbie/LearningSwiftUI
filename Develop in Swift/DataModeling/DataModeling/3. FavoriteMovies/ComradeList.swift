@@ -6,44 +6,42 @@ struct ComradeList: View {
     @Environment(\.modelContext) private var context
     @State private var newComrade: Comrade?
 
-    init(nameFilter: String = "") {
-        let predicate = #Predicate<Comrade> { comrade in
-            nameFilter.isEmpty || comrade.name.localizedStandardContains(nameFilter)
-        }
-
-        _comrades = Query(filter: predicate, sort: \Comrade.name)
-    }
-
     var body: some View {
-        Group {
-            if !comrades.isEmpty {
-                List {
-                    ForEach(comrades) { comrade in
-                        NavigationLink(comrade.name) {
-                            ComradeDetail(comrade: comrade)
+        NavigationSplitView {
+            Group {
+                if !comrades.isEmpty {
+                    List {
+                        ForEach(comrades) { comrade in
+                            NavigationLink(comrade.name) {
+                                ComradeDetail(comrade: comrade)
+                            }
                         }
+                        .onDelete(perform: deleteComrade(indexes:))
                     }
-                    .onDelete(perform: deleteComrade(indexes:))
+                } else {
+                    ContentUnavailableView("Add Comrades", systemImage: "person.and.person")
                 }
-            } else {
-                ContentUnavailableView("Add Comrades", systemImage: "person.and.person")
             }
-        }
-        .navigationTitle("Comrades")
-        .toolbar {
-            ToolbarItem {
-                Button("Add comrade", systemImage: "plus", action: addComrade)
-            }
+            .navigationTitle("Comrades")
+            .toolbar {
+                ToolbarItem {
+                    Button("Add comrade", systemImage: "plus", action: addComrade)
+                }
 
-            ToolbarItem(placement: .topBarTrailing) {
-                EditButton()
+                ToolbarItem(placement: .topBarTrailing) {
+                    EditButton()
+                }
             }
-        }
-        .sheet(item: $newComrade) { comrade in
-            NavigationStack {
-                ComradeDetail(comrade: comrade, isNew: true)
+            .sheet(item: $newComrade) { comrade in
+                NavigationStack {
+                    ComradeDetail(comrade: comrade, isNew: true)
+                }
+                .interactiveDismissDisabled()
             }
-            .interactiveDismissDisabled()
+        } detail: {
+            Text("Select a comrade")
+                .navigationTitle("Comrade")
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
 
@@ -60,8 +58,6 @@ struct ComradeList: View {
     }
 }
 #Preview("Empty List") {
-    NavigationStack {
-        ComradeList(nameFilter: "A")
-            .modelContainer(SampleData.shared.modelContainer)
-    }
+    ComradeList()
+        .modelContainer(for: Comrade.self, inMemory: true)
 }

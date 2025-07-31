@@ -6,16 +6,12 @@ struct MovieList: View {
     @Environment(\.modelContext) private var context
     @State private var newMovie: Movie?
 
-    init(titleFilter: String = "", sortByReleaseDate: Bool = false) {
+    init(titleFilter: String = "") {
         let predicate = #Predicate<Movie> { movie in
             titleFilter.isEmpty || movie.title.localizedStandardContains(titleFilter)
         }
 
-        if sortByReleaseDate {
-            _movies = Query(filter: predicate, sort: \Movie.releaseDate)
-        } else {
-            _movies = Query(filter: predicate, sort: \Movie.title)
-        }
+        _movies = Query(filter: predicate, sort: \Movie.title)
     }
 
     var body: some View {

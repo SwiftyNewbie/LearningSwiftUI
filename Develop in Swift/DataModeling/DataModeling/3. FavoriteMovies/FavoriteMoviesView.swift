@@ -5,7 +5,7 @@ struct FavoriteMoviesView: View {
     var body: some View {
         TabView {
             Tab("Comrades", systemImage: "person.and.person") {
-                FilteredComradeList()
+                ComradeList()
             }
 
             Tab("Movies", systemImage: "film.stack.fill") {

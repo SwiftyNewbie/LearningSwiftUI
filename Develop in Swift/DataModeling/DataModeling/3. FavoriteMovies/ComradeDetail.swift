@@ -29,7 +29,6 @@ struct ComradeDetail: View {
                         .tag(movie)
                 }
             }
-            .pickerStyle(.wheel)
         }
         .navigationTitle(isNew ? "New Comrade" : "Comrade")
         .navigationBarTitleDisplayMode(.inline)
