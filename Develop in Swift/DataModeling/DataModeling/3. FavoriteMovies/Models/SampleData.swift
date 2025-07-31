@@ -17,10 +17,6 @@ import SwiftData
         Movie.sampleData.first!
     }
 
-    var cast: Cast {
-        Cast.sampleData.first!
-    }
-
     private init() {
         let schema = Schema([
             Comrade.self,
@@ -47,17 +43,9 @@ import SwiftData
         for movie in Movie.sampleData {
             context.insert(movie)
         }
-
-        for cast in Cast.sampleData {
-            context.insert(cast)
-        }
-
         Comrade.sampleData[0].favoriteMovie = Movie.sampleData[1]
         Comrade.sampleData[2].favoriteMovie = Movie.sampleData[0]
         Comrade.sampleData[3].favoriteMovie = Movie.sampleData[4]
         Comrade.sampleData[4].favoriteMovie = Movie.sampleData[0]
-
-        Cast.sampleData[0].appeared.append(Movie.sampleData[0])
-        Cast.sampleData[1].appeared.append(Movie.sampleData[1])
     }
 }

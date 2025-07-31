@@ -37,14 +37,6 @@ struct MovieDetail: View {
                     }
                 }
             }
-
-            if !movie.cast.isEmpty {
-                Section("Cast") {
-                    ForEach(movie.cast) { member in
-                        Text(member.name)
-                    }
-                }
-            }
         }
         .navigationTitle(isNew ? "New Movie" : "Movie")
         .navigationBarTitleDisplayMode(.inline)
