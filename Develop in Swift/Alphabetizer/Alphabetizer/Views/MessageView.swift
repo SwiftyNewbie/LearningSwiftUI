@@ -1,15 +1,18 @@
 import SwiftUI
 
 struct MessageView: View {
-    // TODO: Different messages after winning or losing the game
+    @Environment(Alphabetizer.self) private var alphabetizer
     @State private var message = "Place the tiles in alphabetical order"
 
     var body: some View {
-        Text(message)
+        Text(alphabetizer.message.rawValue)
             .font(.largeTitle)
     }
 }
 
 #Preview {
-    MessageView()
+    let alphabetizer = Alphabetizer()
+    alphabetizer.message = .youWin
+    return MessageView()
+        .environment(alphabetizer)
 }
