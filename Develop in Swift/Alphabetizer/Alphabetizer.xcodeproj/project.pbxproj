@@ -10,22 +10,9 @@
 		EBF93B902E3CCAFB009D8A7E /* Alphabetizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alphabetizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		EB3936D22E3CE42C0057510A /* Exceptions for "Alphabetizer" folder in "Alphabetizer" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Models/Untitled.swift,
-			);
-			target = EBF93B8F2E3CCAFB009D8A7E /* Alphabetizer */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		EBF93B922E3CCAFB009D8A7E /* Alphabetizer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				EB3936D22E3CE42C0057510A /* Exceptions for "Alphabetizer" folder in "Alphabetizer" target */,
-			);
 			path = Alphabetizer;
 			sourceTree = "<group>";
 		};
