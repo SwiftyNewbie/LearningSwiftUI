@@ -17,7 +17,7 @@ struct WordCanvas: View {
                 }
             }
             ForEach(tiles) { tile in
-                TileView(tile: tile)
+                TileView(tile: tile, hideWord: alphabetizer.hideWords)
                     .offset(tile.centeredOffset)
                     .gesture(DragGesture().onChanged { value in
                         tile.position = value.location

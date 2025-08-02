@@ -7,6 +7,8 @@ class Alphabetizer {
     var tiles = [Tile]()
     var score = 0
     var message: Message = .instructions
+    var hardMode = false
+    var hideWords = false
 
     private var attempts: Int = 0
     private var successed: Int = 0
@@ -39,6 +41,9 @@ class Alphabetizer {
 
         // Update the message to win or lose
         message = isAlphabetized ? .youWin : .tryAgain
+        if hardMode && !isAlphabetized {
+            score = 0
+        }
 
         // Flip over correct tiles
         for (tile, corretTile) in zip(userSortedTiles, alphabeticallySortedTiles) {

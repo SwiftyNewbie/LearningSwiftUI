@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TileView: View {
     var tile: Tile
+    var hideWord: Bool
 
     private let borderWidth = 5.0
 
@@ -15,8 +16,10 @@ struct TileView: View {
             } else {
                 Text(tile.icon)
                     .font(Font.system(size: 80))
-                Text(tile.word)
-                    .font(.title)
+                if !hideWord {
+                    Text(tile.word)
+                        .font(.title)
+                }
             }
         }
         .frame(width: Tile.size - borderWidth * 2, height: Tile.size - borderWidth * 2)
@@ -37,7 +40,7 @@ struct TileView: View {
 
 #Preview {
     let tile = Tile(word: "Bear")
-    return TileView(tile: tile)
+    return TileView(tile: tile, hideWord: false)
         .onTapGesture {
             tile.flipped.toggle()
         }
