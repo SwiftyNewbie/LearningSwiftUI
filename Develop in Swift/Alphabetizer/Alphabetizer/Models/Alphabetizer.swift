@@ -3,14 +3,19 @@ import Foundation
 @Observable
 class Alphabetizer {
     private let tileCount = 3
-    private let vocab: Vocabulary
 
     var tiles = [Tile]()
     var score = 0
     var message: Message = .instructions
 
-    init(vocab: Vocabulary = .landAnimals) {
-        self.vocab = vocab
+    private var attempts: Int = 0
+    private var successed: Int = 0
+
+    var winPercentage: Int? {
+        attempts > 0 ? Int((Double(successed) / Double(attempts) * 100)) : nil
+    }
+
+    init() {
         startNewGame()
     }
 
@@ -18,6 +23,7 @@ class Alphabetizer {
 
     /// Checks if tiles are in alphabetical order
     func submit() {
+        attempts += 1
         // Check if the tiles are alphabetized
         let userSortedTiles = tiles.sorted { $0.position.x < $1.position.x }
         let alphabeticallySortedTiles = tiles.sorted { $0.word.lexicographicallyPrecedes($1.word) }
@@ -27,6 +33,7 @@ class Alphabetizer {
         // If alphabetized, increment the score
         if isAlphabetized {
             score += 1
+            successed += 1
         }
 
 
@@ -62,7 +69,8 @@ class Alphabetizer {
 
     /// Updates `tiles` with a new set of unalphabetized words
     private func startNewGame() {
-        let newWords = vocab.selectRandomWords(count: tileCount)
+        let randomVocab: Vocabulary = Bool.random() ? .landAnimals : .oceanAnimals
+        let newWords = randomVocab.selectRandomWords(count: tileCount)
         if tiles.isEmpty {
             for word in newWords {
                 tiles.append(Tile(word: word))

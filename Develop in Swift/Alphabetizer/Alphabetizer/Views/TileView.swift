@@ -39,7 +39,6 @@ struct TileView: View {
     let tile = Tile(word: "Bear")
     return TileView(tile: tile)
         .onTapGesture {
-            // TODO: Move into the preview
             tile.flipped.toggle()
         }
 }
