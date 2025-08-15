@@ -10,6 +10,14 @@ struct SettingsView: View {
             Form {
                 Toggle("HARD MODE", isOn: $alphabetizer.hardMode)
                 Toggle("Hide words", isOn: $alphabetizer.hideWords)
+                Group {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Toggle("Mastery Mode", isOn: $alphabetizer.masteryMode)
+                        Text("Three consecutive wins completes a vocabulary set")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

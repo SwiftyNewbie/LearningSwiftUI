@@ -2,6 +2,7 @@ import Foundation
 
 struct Vocabulary {
     let words: [String]
+    let title: String
 
     /// - returns: `count` unique, random words from `words`, guaranteed unsorted
     func selectRandomWords(count: Int) -> [String] {
@@ -42,12 +43,12 @@ extension Vocabulary {
         "Panda",
         "Rabbit",
         "Sheep",
-    ])
+    ], title: "Land Animals")
 
     static let oceanAnimals = Vocabulary(words: [
         "Crab",
         "Jellyfish",
         "Octopus",
         "Whale",
-    ])
+    ], title: "Ocean Animals")
 }

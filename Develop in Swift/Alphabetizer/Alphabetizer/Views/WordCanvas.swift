@@ -34,6 +34,14 @@ struct WordCanvas: View {
                 withAnimation {
                     setInitialTilePositions()
                 }
+            case (.youWin, .completedAllSet):
+                withAnimation {
+                    setInitialTilePositions()
+                }
+            case (.youWin, .completedSet):
+                withAnimation {
+                    setInitialTilePositions()
+                }
             default:
                 break
             }

@@ -13,6 +13,11 @@ struct ScoreView: View {
             if let winPercentage = aphabetizer.winPercentage {
                 Text("Success Rate: \(winPercentage)%")
             }
+            if aphabetizer.masteryMode {
+                if let currentMasteryModeSet = aphabetizer.currentMasteryModeSet {
+                    Text("Current set: \(currentMasteryModeSet.title) | Wins: \(aphabetizer.currentMasteryConsecutiveWins)/3")
+                }
+            }
         }
     }
 }

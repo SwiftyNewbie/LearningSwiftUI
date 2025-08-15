@@ -10,6 +10,26 @@ class Alphabetizer {
     var hardMode = false
     var hideWords = false
 
+    var masteryMode = false {
+        didSet {
+            if masteryMode {
+                currentMasteryModeSet = .landAnimals
+                leftMasteryModeSets = [.oceanAnimals]
+            } else {
+                currentMasteryModeSet = nil
+                leftMasteryModeSets = []
+            }
+            currentMasteryConsecutiveWins = 0
+            completedMasteryModeSets = []
+            startNewGame()
+        }
+    }
+
+    var currentMasteryModeSet: Vocabulary?
+    var currentMasteryConsecutiveWins = 0
+    var completedMasteryModeSets: [Vocabulary] = []
+    var leftMasteryModeSets: [Vocabulary] = []
+
     private var attempts: Int = 0
     private var successed: Int = 0
 
@@ -38,7 +58,6 @@ class Alphabetizer {
             successed += 1
         }
 
-
         // Update the message to win or lose
         message = isAlphabetized ? .youWin : .tryAgain
         if hardMode && !isAlphabetized {
@@ -55,18 +74,41 @@ class Alphabetizer {
             // Delay 2 seconds
             try await Task.sleep(for: .seconds(2))
 
-            // If alphabetized, generate new tiles
-            if isAlphabetized {
-                startNewGame()
+            if masteryMode {
+                if isAlphabetized {
+                    currentMasteryConsecutiveWins += 1
+                    if currentMasteryConsecutiveWins > 2 {
+                        if let next = leftMasteryModeSets.first {
+                            currentMasteryModeSet = next
+                            leftMasteryModeSets.removeFirst()
+                            completedMasteryModeSets.append(next)
+                        } else {
+                            currentMasteryModeSet = .landAnimals
+                            leftMasteryModeSets = [.oceanAnimals]
+                            completedMasteryModeSets = []
+                        }
+                        message = .instructions
+                        currentMasteryConsecutiveWins = 0
+                    }
+                    startNewGame()
+                } else {
+                    currentMasteryConsecutiveWins = 0
+                }
+                message = .instructions
+            } else {
+                // If alphabetized, generate new tiles
+                if isAlphabetized {
+                    startNewGame()
+                }
+
+                // Display instructions
+                message = .instructions
             }
 
             // Flip tiles back to words
             for tile in tiles {
                 tile.flipped = false
             }
-
-            // Display instructions
-            message = .instructions
         }
     }
 
@@ -74,7 +116,12 @@ class Alphabetizer {
 
     /// Updates `tiles` with a new set of unalphabetized words
     private func startNewGame() {
-        let randomVocab: Vocabulary = Bool.random() ? .landAnimals : .oceanAnimals
+        let randomVocab: Vocabulary
+        if let currentMasteryModeSet, masteryMode {
+            randomVocab = currentMasteryModeSet
+        } else {
+            randomVocab = Bool.random() ? .landAnimals : .oceanAnimals
+        }
         let newWords = randomVocab.selectRandomWords(count: tileCount)
         if tiles.isEmpty {
             for word in newWords {
