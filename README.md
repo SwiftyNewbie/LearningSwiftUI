@@ -5,7 +5,7 @@ My journey through Apple's SwiftUI Tutorials
 ## The Plan
 1. [Develop in Swift](https://developer.apple.com/tutorials/develop-in-swift/)
    - SwiftUI foundations ✓
-   - Data modeling
+   - Data modeling ✓
    - Machine learning
    - Spatial computing
 2. [SwiftUI Concepts](https://developer.apple.com/tutorials/swiftui-concepts) ✓
